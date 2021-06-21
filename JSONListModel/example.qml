@@ -23,13 +23,12 @@ Rectangle {
             width: parent.width
             height: 200
 
-            JSONListModel {
+            model: JSONListModel {
                 id: jsonModel1
                 source: "jsonData.txt"
 
                 query: "$.store.book[*]"
             }
-            model: jsonModel1.model
 
             section.delegate: sectionDelegate
             section.property: "title"
@@ -63,13 +62,12 @@ Rectangle {
             width: parent.width
             height: 200
 
-            JSONListModel {
+            model: JSONListModel {
                 id: jsonModel2
                 source: "jsonData.txt"
 
                 query: "$..book[?(@.price<10)]"
             }
-            model: jsonModel2.model
 
             section.delegate: sectionDelegate
             section.property: "category"
@@ -103,7 +101,7 @@ Rectangle {
             width: parent.width
             height: 100
 
-            JSONListModel {
+            model: JSONListModel {
                 id: jsonModel3
                 json: '[ \
                 {"label": "Answer", "value": "42"}, \
@@ -111,11 +109,8 @@ Rectangle {
                 {"label": "Alsace", "value": "67"}, \
                 {"label": "Alsace", "value": "68"} \
                 ]'
-
                 query: "$[?(@.label.charAt(0)==='A')]"
-
             }
-            model: jsonModel3.model
 
             delegate: Component {
                 Text {
